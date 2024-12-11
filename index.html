@@ -115,11 +115,63 @@
 
 		<div class="cart-modal" id="cartModal">
 			<h2>Your Cart</h2>
-			<div id="cartItems"></div>
-			<div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
-			<button id="continueShoppingBtn">Continue Shopping</button>
-			<button id="checkoutBtn">Checkout</button>
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>Color</th>
+						<th>Size</th>
+						<th>Qnt</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody id="cartItems">
+					<tr>
+						<td class="item-column">
+							<img src="/public/images/black.png" alt="Classy Modern Smart Watch" />
+							<p>Classy Modern Smart Watch</p>
+						</td>
+						<td>Black</td>
+						<td>XL</td>
+						<td>1</td>
+						<td>$99.00</td>
+					</tr>
+					<tr>
+						<td class="item-column">
+							<img src="/public/images/purple.png" alt="Classy Modern Smart Watch" />
+							<p>Classy Modern Smart Watch</p>
+						</td>
+						<td>Purple</td>
+						<td>L</td>
+						<td>2</td>
+						<td>$178.00</td>
+					</tr>
+					<tr>
+						<td class="item-column">
+							<img src="/public/images/cyan.png" alt="Classy Modern Smart Watch" />
+							<p>Classy Modern Smart Watch</p>
+						</td>
+						<td>Cyan</td>
+						<td>M</td>
+						<td>1</td>
+						<td>$79.00</td>
+					</tr>
+					<tr>
+						<td class="cart-total">Total</td>
+						<td colspan="2"></td>
+						<td class="cart-total-quantity">4</td>
+						<td id="cartTotal">$356.00</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="cart-actions">
+				<button id="continueShoppingBtn">Continue Shopping</button>
+				<button id="checkoutBtn">Checkout</button>
+			</div>
 		</div>
+
+		<!-- overlay -->
+		<div class="overlay" id="overlay"></div>
 
 		<script>
 			// State management
@@ -129,6 +181,7 @@
 				selectedSize: "M",
 				quantity: 1,
 			};
+			const overlay = document.getElementById("overlay");
 
 			// Select all color options
 			const colorOptions = document.querySelectorAll(".color-option");
@@ -225,10 +278,12 @@
 
 			// Toggle cart modal
 			document.getElementById("checkoutFloat").addEventListener("click", () => {
+				overlay.classList.add("active");
 				document.getElementById("cartModal").style.display = "block";
 			});
 
 			document.getElementById("continueShoppingBtn").addEventListener("click", () => {
+				overlay.classList.remove("active");
 				document.getElementById("cartModal").style.display = "none";
 			});
 		</script>
