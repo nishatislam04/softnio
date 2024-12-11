@@ -1,8 +1,7 @@
 "use strict";
-const state = {
-	cart: [],
-	quantity: 1, // tempo
-};
+
+import { removeStyles } from "./helper";
+import { state } from "./state";
 
 // Update cart UI
 function updateCartUI() {
@@ -111,19 +110,6 @@ document.addEventListener("click", function (e) {
 		}
 	}
 
-	// if (e.target.id === "addToCart") {
-	// 	const item = {
-	// 		name: "Classy Modern Smart watch",
-	// 		color: state.selectedColor,
-	// 		size: state.selectedSize,
-	// 		quantity: state.quantity,
-	// 		price: 79.0,
-	// 	};
-
-	// 	state.cart.push(item);
-	// 	updateCartUI();
-	// }
-
 	// upodate color element
 	if (e.target.classList.contains("color-option")) {
 		removeStyles(".color-option", "active");
@@ -148,25 +134,4 @@ document.addEventListener("click", function (e) {
 		document.querySelector(".size-option.active")?.classList.remove("active");
 		element.classList.add("active");
 	}
-});
-
-// helper function
-function removeStyles(selector, className) {
-	const elements = document.querySelectorAll(selector);
-	elements.forEach((element) => element.classList.remove(className));
-}
-
-document.addEventListener("DOMContentLoaded", function (e) {
-	const firstColor = document.querySelector(".color-option");
-	const color = firstColor.dataset.color;
-	firstColor.style.outlineColor = color;
-	firstColor.style.outlineOffset = "2px";
-	firstColor.classList.add("active");
-
-	const firstSize = document.querySelector(".size-option");
-	firstSize.classList.add("active");
-	firstSize.classList.add("active");
-
-	const quantityInput = document.querySelector("#quantity");
-	quantityInput.value = state.quantity || "1";
 });
