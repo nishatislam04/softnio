@@ -350,6 +350,10 @@ body {
 					border-bottom: 1px solid $border-color;
 					vertical-align: middle;
 
+					&:nth-child(2) {
+						color: $text-color;
+					}
+
 					&:nth-child(3),
 					&:nth-child(4),
 					&:nth-child(5) {
@@ -382,6 +386,10 @@ body {
 			height: 50px;
 			object-fit: cover;
 			border-radius: 4px;
+		}
+
+		& p {
+			color: $text-color;
 		}
 	}
 
