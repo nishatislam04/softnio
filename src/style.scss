@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary-color: #8b49ff;
 $secondary-color: #6576ff;
 $accent-color: #ffbb5a;
@@ -445,7 +447,7 @@ body {
 			color: #fff;
 
 			&:hover {
-				background-color: darken($secondary-color, 10%);
+				background-color: color.scale($secondary-color, $lightness: -10%);
 			}
 		}
 	}
