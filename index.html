@@ -13,6 +13,7 @@
 		<script
 			src="https://kit.fontawesome.com/e5835f5f2c.js"
 			crossorigin="anonymous"></script>
+		<script src="./script.js" defer></script>
 	</head>
 
 	<body>
@@ -61,7 +62,7 @@
 					<h3>Band Color</h3>
 					<div class="color-options">
 						<div
-							class="color-option active"
+							class="color-option"
 							data-color="purple"
 							style="background-color: purple"></div>
 						<div
@@ -110,7 +111,7 @@
 		</div>
 
 		<div class="checkout-float" id="checkoutFloat">
-			Checkout <span class="cart-count">2</span>
+			Checkout <span class="cart-count">0</span>
 		</div>
 
 		<div class="cart-modal" id="cartModal">
@@ -126,7 +127,7 @@
 					</tr>
 				</thead>
 				<tbody id="cartItems">
-					<tr>
+					<!-- <tr>
 						<td class="item-column">
 							<img src="/images/black.png" alt="Classy Modern Smart Watch" />
 							<p>Classy Modern Smart Watch</p>
@@ -155,13 +156,13 @@
 						<td>M</td>
 						<td>1</td>
 						<td>$79.00</td>
-					</tr>
-					<tr>
+					</tr> -->
+					<!-- <tr>
 						<td class="cart-total">Total</td>
 						<td colspan="2"></td>
-						<td class="cart-total-quantity">4</td>
-						<td id="cartTotal">$356.00</td>
-					</tr>
+						<td class="cart-total-quantity">0</td>
+						<td id="cartTotal">0</td>
+					</tr> -->
 				</tbody>
 			</table>
 			<div class="cart-actions">
@@ -172,134 +173,5 @@
 
 		<!-- overlay -->
 		<div class="overlay" id="overlay"></div>
-
-		<script>
-			// State management
-			const state = {
-				cart: [],
-				selectedColor: "purple",
-				selectedSize: "M",
-				quantity: 1,
-			};
-			const overlay = document.getElementById("overlay");
-
-			// Select all color options
-			const colorOptions = document.querySelectorAll(".color-option");
-			colorOptions.forEach((option) => {
-				option.addEventListener("click", () => {
-					colorOptions.forEach((opt) => {
-						opt.classList.remove("active");
-						opt.style.outlineColor = "transparent";
-					});
-					const color = option.dataset.color;
-					option.classList.add("active");
-					option.style.outlineColor = color;
-				});
-			});
-
-			// Update main image based on color selection
-			document.querySelectorAll(".color-option").forEach((option) => {
-				option.addEventListener("click", (e) => {
-					state.selectedColor = e.target.dataset.color;
-					document.querySelector("#mainImage").src = `images/${state.selectedColor}.png`;
-
-					// Update active state
-					document.querySelector(".color-option.active").classList.remove("active");
-					e.target.classList.add("active");
-				});
-			});
-
-			// Size selection
-			document.querySelectorAll(".size-option").forEach((option) => {
-				option.addEventListener("click", (e) => {
-					state.selectedSize = e.target.dataset.size;
-					document.querySelector(".size-option.active")?.classList.remove("active");
-					e.target.classList.add("active");
-				});
-			});
-
-			// Quantity controls
-			document.getElementById("decreaseQty").addEventListener("click", () => {
-				if (state.quantity > 1) {
-					state.quantity--;
-					document.getElementById("quantity").value = state.quantity;
-				}
-			});
-
-			document.getElementById("increaseQty").addEventListener("click", () => {
-				state.quantity++;
-				document.getElementById("quantity").value = state.quantity;
-			});
-
-			// Add to cart functionality
-			document.getElementById("addToCart").addEventListener("click", () => {
-				const item = {
-					name: "Classy Modern Smart watch",
-					color: state.selectedColor,
-					size: state.selectedSize,
-					quantity: state.quantity,
-					price: 79.0,
-				};
-
-				state.cart.push(item);
-				updateCartUI();
-			});
-
-			// Update cart UI
-			function updateCartUI() {
-				const cartCount = state.cart.reduce((acc, item) => acc + item.quantity, 0);
-				document.querySelector(".cart-count").textContent = cartCount;
-
-				// Update cart modal
-				const cartItems = document.getElementById("cartItems");
-				cartItems.innerHTML = state.cart
-					.map(
-						(item) => `
-                <div class="cart-item">
-                    <img src="smart-watch-${item.color}.jpg" width="50">
-                    <div>
-                        <h4>${item.name}</h4>
-                        <p>Color: ${item.color}, Size: ${item.size}</p>
-                        <p>Quantity: ${item.quantity}</p>
-                        <p>$${(item.price * item.quantity).toFixed(2)}</p>
-                    </div>
-                </div>
-            `
-					)
-					.join("");
-
-				// Update total
-				const total = state.cart.reduce(
-					(acc, item) => acc + item.price * item.quantity,
-					0
-				);
-				document.getElementById("cartTotal").textContent = total.toFixed(2);
-			}
-
-			// Toggle cart modal
-			document.getElementById("checkoutFloat").addEventListener("click", () => {
-				overlay.classList.add("active");
-				document.getElementById("cartModal").style.display = "block";
-			});
-
-			document.getElementById("continueShoppingBtn").addEventListener("click", () => {
-				overlay.classList.remove("active");
-				document.getElementById("cartModal").style.display = "none";
-			});
-
-			document.addEventListener("click", function (e) {
-				if (e.target.id === "overlay") {
-					e.target.classList.remove("active");
-					document.getElementById("cartModal").style.display = "none";
-				}
-			});
-			document.addEventListener("click", function (e) {
-				if (e.target.id === "bookmark") {
-					e.target.classList.contains("fa-regular")
-						? e.target.classList.replace("fa-regular", "fa-solid")
-						: e.target.classList.replace("fa-solid", "fa-regular");
-				}
-			});
-		</script>
 	</body>
 </html>
