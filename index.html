@@ -1,13 +1,236 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Smart Watch Shop</title>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet" />
+		<link href="./src/style.css" rel="stylesheet" />
+		<script
+			src="https://kit.fontawesome.com/e5835f5f2c.js"
+			crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<div class="product-container">
+			<div class="product-image">
+				<img id="mainImage" src="images/purple.png" alt="Smart Watch" />
+			</div>
+
+			<div class="product-details">
+				<h1>Classy Modern Smart watch</h1>
+				<div class="product-rating">
+					<div class="stars">
+						<i class="star-icon fas fa-star"></i>
+						<i class="star-icon fas fa-star"></i>
+						<i class="star-icon fas fa-star"></i>
+						<i class="star-icon fas fa-star-half-alt"></i>
+						<i class="star-icon far fa-star"></i>
+					</div>
+					<span class="review-count">(2 Reviews)</span>
+				</div>
+				<div class="product-price">
+					<span class="original-price">$99.00</span>
+					<span class="discounted-price">$79.00</span>
+				</div>
+
+				<div class="product-description">
+					<p>
+						I must explain to you how all this mistaken idea of denoun cing ple praising
+						pain was born and I will give you a complete account of the system, and
+						expound the actual teaching.
+					</p>
+				</div>
+
+				<div class="product-vendor">
+					<div class="first">
+						<p>Type</p>
+						<p>Watch</p>
+					</div>
+					<div class="second">
+						<p>Model Number</p>
+						<p>Forerunner 290XT</p>
+					</div>
+				</div>
+
+				<div class="color-selection">
+					<h3>Band Color</h3>
+					<div class="color-options">
+						<div
+							class="color-option active"
+							data-color="purple"
+							style="background-color: purple"></div>
+						<div
+							class="color-option"
+							data-color="cyan"
+							style="background-color: cyan"></div>
+						<div
+							class="color-option"
+							data-color="blue"
+							style="background-color: blue"></div>
+						<div
+							class="color-option"
+							data-color="black"
+							style="background-color: black"></div>
+					</div>
+				</div>
+
+				<div class="size-selection">
+					<h3>Wrist Size</h3>
+					<div class="size-options">
+						<div class="size-option" data-size="S">S <span class="price">$69</span></div>
+						<div class="size-option" data-size="M">M <span class="price">$79</span></div>
+						<div class="size-option" data-size="L">L <span class="price">$89</span></div>
+						<div class="size-option" data-size="XL">
+							XL <span class="price">$99</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-bottom">
+					<div class="quantity-selector">
+						<button id="decreaseQty" class="decrement-btn">
+							<i class="fas fa-minus"></i>
+						</button>
+						<input id="quantity" type="text" value="1" min="1" class="counter-input" />
+						<button id="increaseQty" class="increment-btn">
+							<i class="fas fa-plus"></i>
+						</button>
+					</div>
+					<button id="addToCart" class="add-to-cart">Add to Cart</button>
+					<div class="favorite">
+						<i class="fa-regular fa-heart"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="checkout-float" id="checkoutFloat">
+			Checkout <span class="cart-count">2</span>
+		</div>
+
+		<div class="cart-modal" id="cartModal">
+			<h2>Your Cart</h2>
+			<div id="cartItems"></div>
+			<div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+			<button id="continueShoppingBtn">Continue Shopping</button>
+			<button id="checkoutBtn">Checkout</button>
+		</div>
+
+		<script>
+			// State management
+			const state = {
+				cart: [],
+				selectedColor: "purple",
+				selectedSize: "M",
+				quantity: 1,
+			};
+
+			// Select all color options
+			const colorOptions = document.querySelectorAll(".color-option");
+			colorOptions.forEach((option) => {
+				option.addEventListener("click", () => {
+					colorOptions.forEach((opt) => {
+						opt.classList.remove("active");
+						opt.style.outlineColor = "transparent";
+					});
+					const color = option.dataset.color;
+					option.classList.add("active");
+					option.style.outlineColor = color;
+				});
+			});
+
+			// Update main image based on color selection
+			document.querySelectorAll(".color-option").forEach((option) => {
+				option.addEventListener("click", (e) => {
+					state.selectedColor = e.target.dataset.color;
+					document.querySelector("#mainImage").src = `images/${state.selectedColor}.png`;
+
+					// Update active state
+					document.querySelector(".color-option.active").classList.remove("active");
+					e.target.classList.add("active");
+				});
+			});
+
+			// Size selection
+			document.querySelectorAll(".size-option").forEach((option) => {
+				option.addEventListener("click", (e) => {
+					state.selectedSize = e.target.dataset.size;
+					document.querySelector(".size-option.active")?.classList.remove("active");
+					e.target.classList.add("active");
+				});
+			});
+
+			// Quantity controls
+			document.getElementById("decreaseQty").addEventListener("click", () => {
+				if (state.quantity > 1) {
+					state.quantity--;
+					document.getElementById("quantity").value = state.quantity;
+				}
+			});
+
+			document.getElementById("increaseQty").addEventListener("click", () => {
+				state.quantity++;
+				document.getElementById("quantity").value = state.quantity;
+			});
+
+			// Add to cart functionality
+			document.getElementById("addToCart").addEventListener("click", () => {
+				const item = {
+					name: "Classy Modern Smart watch",
+					color: state.selectedColor,
+					size: state.selectedSize,
+					quantity: state.quantity,
+					price: 79.0,
+				};
+
+				state.cart.push(item);
+				updateCartUI();
+			});
+
+			// Update cart UI
+			function updateCartUI() {
+				const cartCount = state.cart.reduce((acc, item) => acc + item.quantity, 0);
+				document.querySelector(".cart-count").textContent = cartCount;
+
+				// Update cart modal
+				const cartItems = document.getElementById("cartItems");
+				cartItems.innerHTML = state.cart
+					.map(
+						(item) => `
+                <div class="cart-item">
+                    <img src="smart-watch-${item.color}.jpg" width="50">
+                    <div>
+                        <h4>${item.name}</h4>
+                        <p>Color: ${item.color}, Size: ${item.size}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                </div>
+            `
+					)
+					.join("");
+
+				// Update total
+				const total = state.cart.reduce(
+					(acc, item) => acc + item.price * item.quantity,
+					0
+				);
+				document.getElementById("cartTotal").textContent = total.toFixed(2);
+			}
+
+			// Toggle cart modal
+			document.getElementById("checkoutFloat").addEventListener("click", () => {
+				document.getElementById("cartModal").style.display = "block";
+			});
+
+			document.getElementById("continueShoppingBtn").addEventListener("click", () => {
+				document.getElementById("cartModal").style.display = "none";
+			});
+		</script>
+	</body>
 </html>
