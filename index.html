@@ -286,6 +286,13 @@
 				overlay.classList.remove("active");
 				document.getElementById("cartModal").style.display = "none";
 			});
+
+			document.addEventListener("click", function (e) {
+				if (e.target.id === "overlay") {
+					e.target.classList.remove("active");
+					document.getElementById("cartModal").style.display = "none";
+				}
+			});
 		</script>
 	</body>
 </html>

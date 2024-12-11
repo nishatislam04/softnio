@@ -450,6 +450,7 @@ body {
 	background-color: rgba(0, 0, 0, 0.658);
 	z-index: 100;
 	display: none; /* Hidden by default */
+	cursor: pointer;
 }
 
 /* Show overlay when active */
