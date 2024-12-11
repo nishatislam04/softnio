@@ -30,6 +30,7 @@ function updateCartUI() {
 		(acc, item) => acc + item.price * item.quantity,
 		0
 	);
+	const totalQuantity = state.cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
 	const cartItems = document.getElementById("cartItems");
 	cartItems.innerHTML = "";
@@ -53,24 +54,15 @@ function updateCartUI() {
 	html += ` <tr>
                     <td class="cart-total">Total</td>
                     <td colspan="2"></td>
-                    <td class="cart-total-quantity">${state.quantity}</td>
+                    <td class="cart-total-quantity">${totalQuantity}</td>
                     <td id="cartTotal">$${totalPrice}</td>
                 </tr>`;
-
+	console.log(state);
 	cartItems.insertAdjacentHTML("afterbegin", html);
-
-	// Update total
-
-	// document.getElementById("cartTotal").textContent = total.toFixed(2);
 }
 
 const quantity = document.getElementById("quantity");
-const increaseQty = document.getElementById("increaseQty");
-const decreaseQty = document.getElementById("decreaseQty");
-const addToCart = document.getElementById("addToCart");
-const checkoutFloat = document.getElementById("checkoutFloat");
 const cartModal = document.getElementById("cartModal");
-const continueShopBtn = document.getElementById("continueShoppingBtn");
 const overlay = document.getElementById("overlay");
 
 document.addEventListener("click", function (e) {
