@@ -12,7 +12,12 @@ import { faHeart as faEmptyHeart } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons";
 
 const productName = "Classy Modern Smart watch";
-const colors = ["purple", "cyan", "blue", "black"];
+const colors = [
+	{ name: "purple", code: "#816BFF" },
+	{ name: "cyan", code: "#1FCEC9" },
+	{ name: "blue", code: "#4B97D3" },
+	{ name: "black", code: "#3B4747" },
+];
 const sizes = [
 	{ name: "S", price: 69 },
 	{ name: "M", price: 79 },
@@ -21,6 +26,7 @@ const sizes = [
 ];
 
 function App() {
+	const [selectedImage, setSelectedImage] = useState(colors[0].name);
 	const [quantity, setQuantity] = useState(1);
 	const [isBookmark, setIsBookmark] = useState(false);
 	const [colorSelected, setColorSelected] = useState(colors[0]);
@@ -52,7 +58,7 @@ function App() {
 		<>
 			<div className="product-container">
 				<div className="product-image">
-					<img id="mainImage" src="images/purple.png" alt="Smart Watch" />
+					<img id="mainImage" src={`images/${selectedImage}.png`} alt="Smart Watch" />
 				</div>
 
 				<div className="product-details">
@@ -98,11 +104,15 @@ function App() {
 								<div
 									key={i}
 									className="color-option"
-									onClick={() => setColorSelected(color)}
+									onClick={() => {
+										setColorSelected(color.name);
+										setSelectedImage(color.name);
+									}}
 									style={{
-										backgroundColor: color,
-										outlineColor: colorSelected === color ? color : "transparent",
-										outlineOffset: colorSelected === color ? "2px" : "none",
+										backgroundColor: color.code,
+										outlineColor:
+											colorSelected === color.name ? color.code : "transparent",
+										outlineOffset: colorSelected === color.name ? "2px" : "none",
 									}}></div>
 							))}
 						</div>
