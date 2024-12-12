@@ -11,7 +11,7 @@
 
 4.  `npm run dev`
 
-View the Assignement `http://localhost:5173/`
+View the Assignement in [local](http://localhost:5173/)
 
 
 ## Technology used
@@ -28,5 +28,5 @@ View the Assignement `http://localhost:5173/`
 
 ## Live Link in Vercel
 
- - HTML `https://softnio-assignment-html.vercel.app/`
- - REACT `https://softnio-assignment-react-lztag3qi0-nishat-islams-projects.vercel.app/`
+ - [HTML VERSION](https://softnio-assignment-html.vercel.app/)
+ - [REACT VERSION](https://softnio-assignment-react-lztag3qi0-nishat-islams-projects.vercel.app/)
