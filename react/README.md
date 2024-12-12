@@ -1,8 +1,30 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Softnio Assignment
 
-Currently, two official plugins are available:
+1. git clone: `git clone https://github.com/nishatislam04/softnio.git`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2.  `cd sofnio`
+
+3.  `npm install`
+
+4.  `npm run dev`
+
+View the Assignement `http://localhost:5173/`
+
+
+## Technology used
+
+1. Vite
+
+2. scss (sass-embedded)
+
+3. Font-Awesome
+
+## Important Note
+* `main` branch contains HTML version
+* `react` branch contains React Version
+
+## Live Link in Vercel
+
+ - HTML 
+ - REACT 
