@@ -11,11 +11,46 @@ $font-family: "Roboto", sans-serif;
 $modal-bg-color: #ffffff;
 $modal-padding: 3rem;
 $modal-border-radius: 0.8rem;
-$modal-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+$modal-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 $font-size-base: 1.4rem;
 $font-size-large: 2.4rem;
 $gap-spacing: 1rem;
 $button-padding: 1rem 2rem;
+
+//
+@mixin mediaQuery($bp) {
+	@if $bp == big-desk {
+		@media only screen and (min-width: 112.5em) {
+			@content;
+		}
+	}
+
+	@if $bp == tab-land {
+		@media only screen and (max-width: 75em) {
+			@content;
+		}
+	}
+
+	@if $bp == tab-port {
+		@media only screen and (max-width: 56.25em) {
+			@content;
+		}
+	}
+
+	@if $bp == mobile {
+		@media only screen and (max-width: 37.5em) {
+			@content;
+		}
+	}
+
+	@if $bp == mob-small {
+		@media only screen and (max-width: 25em) {
+			@content;
+		}
+	}
+}
+
+//
 
 *,
 *::before,
@@ -28,6 +63,26 @@ $button-padding: 1rem 2rem;
 html {
 	box-sizing: border-box;
 	font-size: 62.5%;
+
+	@include mediaQuery(big-desk) {
+		font-size: 75%; //12px
+	}
+
+	@include mediaQuery(tab-land) {
+		font-size: 56%; //9px
+	}
+
+	@include mediaQuery(tab-port) {
+		font-size: 50%; //8px
+	}
+
+	@include mediaQuery(mobile) {
+		font-size: 43%; //7px
+	}
+
+	@include mediaQuery(mob-small) {
+		font-size: 31%; //5px
+	}
 }
 
 body {
@@ -54,9 +109,17 @@ body {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 4rem;
-	height: 85vh;
-	box-sizing: border-box;
+	// height: 85vh;
 	overflow: hidden;
+
+	@include mediaQuery(tab-land) {
+		padding: 0;
+		// height: 90vh;
+		gap: 2rem;
+	}
+	@include mediaQuery(mobile) {
+		gap: 0.5rem;
+	}
 }
 
 .product-image {
@@ -71,7 +134,7 @@ body {
 
 	img {
 		width: 100%;
-		height: 100%;
+		// height: 100%;
 		object-fit: contain;
 		border-radius: 8px;
 	}
@@ -80,7 +143,6 @@ body {
 .product-details {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	overflow: hidden;
 	padding: 10px;
 	background: #fff;
@@ -91,12 +153,17 @@ body {
 		color: $text-color;
 		margin: 0 0 0.8rem;
 		font-size: 4rem;
+
+		@include mediaQuery(mobile) {
+			font-size: 2.5rem;
+			line-height: 1.2;
+		}
 	}
 
 	.product-rating {
 		display: flex;
 		align-items: center;
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
 
 		.stars {
 			color: #ffd700;
@@ -112,10 +179,10 @@ body {
 	.product-price {
 		display: flex;
 		align-items: center;
-		margin-bottom: 0.6rem;
+		margin-bottom: 1.2rem;
 
 		.original-price {
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			text-decoration: line-through;
 			color: #999;
 			margin-right: 0.5rem;
@@ -132,26 +199,36 @@ body {
 		color: $text-muted;
 		font-weight: 400;
 		font-size: 1.7rem;
-		line-height: 1.6;
+		margin-bottom: 1.2rem;
 
 		p {
+			line-height: 1.6;
 			margin: 0;
 			margin-bottom: 1rem;
+
+			@include mediaQuery(tab-land) {
+				line-height: 1.4;
+			}
 		}
 	}
 
 	.product-vendor {
 		display: grid;
-		grid-template-columns: 90px 250px;
-		max-width: 300px;
+		grid-template-columns: 9rem 25rem;
+		max-width: 30rem;
+		margin-bottom: 1.2rem;
 
 		.first,
 		.second {
-			line-height: 1.6;
+			line-height: 2;
+
+			@include mediaQuery(tab-land) {
+				line-height: 1.4;
+			}
 
 			p:first-child {
 				color: $text-muted;
-				font-size: 14px;
+				font-size: 1.4rem;
 			}
 
 			p:nth-child(2) {
@@ -165,22 +242,22 @@ body {
 
 .color-selection,
 .size-selection {
-	margin-bottom: 0.6rem;
+	margin-bottom: 1rem;
 
 	h3 {
 		color: #364a63;
-		margin: 0.8rem 0;
+		margin: 1rem 0;
 		font-size: 1.8rem;
 	}
 
 	& .color-options {
 		display: flex;
-		gap: 0.6rem;
+		gap: 1.2rem;
 	}
 
 	.color-option {
-		width: 24px;
-		height: 24px;
+		width: 2.4rem;
+		height: 2.4rem;
 		border-radius: 50%;
 		cursor: pointer;
 		outline: 2px solid transparent;
@@ -193,16 +270,21 @@ body {
 
 	& .size-options {
 		display: flex;
-		gap: 10px;
+		flex-wrap: wrap;
+		gap: 1rem;
 
 		.size-option {
-			padding: 10px 18px;
+			padding: 1rem 1.8rem;
 			border: 1px solid $border-color;
 			border-radius: 4px;
 			cursor: pointer;
 			font-weight: 700;
 			font-size: 1.8rem;
 			color: $text-color;
+
+			@include mediaQuery(tab-land) {
+				padding: 1rem 0.8rem;
+			}
 
 			&.active {
 				border: 2px solid $primary-color;
@@ -222,7 +304,7 @@ body {
 .product-bottom {
 	display: flex;
 	align-items: center;
-	margin-top: 1.5rem;
+	margin-top: 2.5em;
 
 	.quantity-selector {
 		display: flex;
@@ -288,7 +370,7 @@ body {
 
 	.favorite i {
 		color: $primary-color;
-		font-size: 20px;
+		font-size: 2rem;
 	}
 
 	.favorite.active i {
@@ -297,7 +379,7 @@ body {
 }
 
 .checkout-float {
-	margin-top: auto;
+	margin-top: 3rem;
 	margin-bottom: 1rem;
 	background: $accent-color;
 	color: $text-color;
@@ -313,7 +395,7 @@ body {
 		color: $text-color;
 		border-radius: 20%;
 		padding: 3px 7px;
-		font-size: 12px;
+		font-size: 1.2rem;
 		margin-left: 5px;
 		font-weight: 700;
 	}
@@ -387,6 +469,15 @@ body {
 						&:last-child {
 							font-size: 1.8rem !important;
 							text-align: right;
+
+							@include mediaQuery(tab-land) {
+								font-size: 1.2rem !important;
+							}
+						}
+						&#cartTotal {
+							@include mediaQuery(tab-land) {
+								font-size: 1.8rem !important;
+							}
 						}
 					}
 
@@ -407,8 +498,8 @@ body {
 		gap: $gap-spacing;
 
 		img {
-			width: 50px;
-			height: 50px;
+			width: 5rem;
+			height: 5rem;
 			object-fit: cover;
 			border-radius: 4px;
 		}
