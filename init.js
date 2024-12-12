@@ -1,8 +1,9 @@
 import { state } from "./state";
 
 const firstColor = document.querySelector(".color-option");
-const color = firstColor.dataset.color;
-firstColor.style.outlineColor = color;
+const colorCode = firstColor.dataset.color;
+const colorName = firstColor.dataset.name;
+firstColor.style.outlineColor = colorCode;
 firstColor.style.outlineOffset = "2px";
 firstColor.classList.add("active");
 

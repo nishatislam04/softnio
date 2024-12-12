@@ -114,7 +114,7 @@ document.addEventListener("click", function (e) {
 	// update image
 	if (e.target.classList.contains("color-option")) {
 		const element = e.target;
-		state.selectedColor = element.dataset.color;
+		state.selectedColor = element.dataset.name;
 		document.querySelector("#mainImage").src = `images/${state.selectedColor}.png`;
 		document.querySelector(".color-option.active").classList.remove("active");
 		element.classList.add("active");
