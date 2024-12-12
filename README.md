@@ -1,7 +1,7 @@
 
 ## Softnio Assignment
 
-1. git clone: `git clone https://github.com/nishatislam04/softnio.git`
+1. git clone: `git clone https://github.com/nishatislam04/softnio-assignment.git`
 
 2.  `cd sofnio`
 
