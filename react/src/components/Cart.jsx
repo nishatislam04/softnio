@@ -25,7 +25,7 @@ export default function Cart({
 						{cart.map((item, i) => (
 							<tr key={i} className="product-item">
 								<td className="item-column">
-									<img src={`/images/${item.color.name}.png`} alt={productName} />
+									<img src={`/images/${item.color}.png`} alt={productName} />
 									<p>{item.name}</p>
 								</td>
 								<td>{item.color.name}</td>
