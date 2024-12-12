@@ -6,7 +6,7 @@ import { state } from "./state";
 // Update cart UI
 function updateCartUI() {
 	const productName = document.querySelector(".product-details h1").textContent;
-	const selectedColor = document.querySelector(".color-option.active").dataset.color;
+	const selectedColor = document.querySelector(".color-option.active").dataset.name;
 	const selectedSize = document.querySelector(".size-option.active").dataset.size;
 	const selectedPrice = document
 		.querySelector(".size-option.active .price")
