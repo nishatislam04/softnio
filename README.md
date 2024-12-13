@@ -29,4 +29,4 @@ View the Assignement in [local](http://localhost:5173/)
 ## Live Link in Vercel
 
  - [HTML VERSION](https://softnio-assignment-html.vercel.app/)
- - [REACT VERSION](https://softnio-assignment-react-lztag3qi0-nishat-islams-projects.vercel.app/)
+ - [REACT VERSION](https://softnio-assignment-react.vercel.app/)
