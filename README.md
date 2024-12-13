@@ -1,20 +1,23 @@
+## Information 
 
-## Softnio Assignment
+This is an assignment for softnio, where i have build a fully responsive and pixel perfect webpage. I have complete this assignment in both Javascript And React version. I have used many intermediate to advanced concepts when building the Javascript part. I have also used many react fundamental concepts while building the React part. I am very proud and confident about my works. Thanks
 
-1. git clone: `git clone https://github.com/nishatislam04/softnio-assignment.git`
+## Softnio Assignment : setup
 
-2.  `cd sofnio`
+* Clone: `git clone https://github.com/nishatislam04/softnio-assignment.git`
 
-3. `cd html` or `cd react`
+*  Navigate to project: `cd sofnio-assignment`
 
-3.  `npm install`
+* Navigate to different version: `cd html` or `cd react`
 
-4.  `npm run dev`
+*  Install dependency: `npm install`
+
+*  Start Local Server: `npm run dev`
 
 View the Assignement in [local](http://localhost:5173/)
 
 
-## Technology used
+## Additioanl Technology used
 
 1. Vite
 
@@ -22,9 +25,6 @@ View the Assignement in [local](http://localhost:5173/)
 
 3. Font-Awesome
 
-## Important Note
-* `main` branch contains HTML version
-* `react` branch contains React Version
 
 ## Live Link in Vercel
 

@@ -5,9 +5,11 @@
 
 2.  `cd sofnio`
 
-3.  `npm install`
+3. `cd react`
 
-4.  `npm run dev`
+4.  `npm install`
+
+5.  `npm run dev`
 
 View the Assignement `http://localhost:5173/`
 
@@ -19,12 +21,3 @@ View the Assignement `http://localhost:5173/`
 2. scss (sass-embedded)
 
 3. Font-Awesome
-
-## Important Note
-* `main` branch contains HTML version
-* `react` branch contains React Version
-
-## Live Link in Vercel
-
- - HTML 
- - REACT 
