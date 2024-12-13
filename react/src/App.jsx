@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./style.scss";
+import "./react-style.scss";
 
 import SizeOptions from "./components/SizeOptions";
 import ColorOptions from "./components/ColorOptions";
