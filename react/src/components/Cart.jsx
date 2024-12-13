@@ -1,5 +1,6 @@
 export default function Cart({
 	cart,
+	setCart,
 	productName,
 	totalQuantity,
 	setShowOverlay,
@@ -22,10 +23,17 @@ export default function Cart({
 					</thead>
 
 					<tbody id="cartItems">
+						{cart.length === 0 && (
+							<tr>
+								<td colSpan={5} className="cart-data-not-found">
+									No Items were found on cart
+								</td>
+							</tr>
+						)}
 						{cart.map((item, i) => (
 							<tr key={i} className="product-item">
 								<td className="item-column">
-									<img src={`/images/${item.color}.png`} alt={productName} />
+									<img src={`/images/${item.color.name}.png`} alt={productName} />
 									<p>{item.name}</p>
 								</td>
 								<td>{item.color.name}</td>
@@ -34,12 +42,14 @@ export default function Cart({
 								<td>${item.price}</td>
 							</tr>
 						))}
-						<tr>
-							<td className="cart-total">Total</td>
-							<td colSpan="2"></td>
-							<td className="cart-total-quantity">{totalQuantity}</td>
-							<td id="cartTotal">${totalPrice}</td>
-						</tr>
+						{cart.length > 0 && (
+							<tr>
+								<td className="cart-total">Total</td>
+								<td colSpan="2"></td>
+								<td className="cart-total-quantity">{totalQuantity}</td>
+								<td id="cartTotal">${totalPrice}</td>
+							</tr>
+						)}
 					</tbody>
 				</table>
 			</div>
@@ -52,7 +62,15 @@ export default function Cart({
 					}}>
 					Continue Shopping
 				</button>
-				<button id="checkoutBtn">Checkout</button>
+				<button
+					id="checkoutBtn"
+					onClick={() => {
+						setCart([]);
+						setShowCart(false);
+						setShowOverlay(false);
+					}}>
+					Checkout
+				</button>
 			</div>
 		</div>
 	);

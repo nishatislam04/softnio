@@ -75,6 +75,7 @@ function App() {
 			{showCart && (
 				<Cart
 					cart={cart}
+					setCart={setCart}
 					productName={productName}
 					totalQuantity={totalQuantity}
 					setShowOverlay={setShowOverlay}
