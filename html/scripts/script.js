@@ -126,4 +126,18 @@ document.addEventListener("click", function (e) {
 		document.querySelector(".size-option.active")?.classList.remove("active");
 		element.classList.add("active");
 	}
+
+	if (e.target.id === "checkoutBtn") {
+		state.cart = [];
+		state.quantity = 0;
+		document.querySelector(".cart-table tbody").innerHTML = "";
+		document.querySelector(".cart-table tbody").innerHTML = `<tr>
+								<td colspan=5 class="cart-data-not-found">
+									No Items were found on cart
+								</td>
+							</tr>`;
+		document.querySelector(".cart-count").textContent = "0";
+		document.querySelector("#cartModal").style.display = "none";
+		document.querySelector("#overlay").classList.remove("active");
+	}
 });
