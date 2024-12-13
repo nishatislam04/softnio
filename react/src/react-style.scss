@@ -457,7 +457,7 @@ body {
 		cursor: pointer;
 	}
 
-	.favorite i {
+	.favorite svg {
 		color: $primary-color;
 		font-size: 2rem;
 
@@ -466,7 +466,7 @@ body {
 		}
 	}
 
-	.favorite.active i {
+	.favorite.active svg {
 		color: $primary-color;
 	}
 }
