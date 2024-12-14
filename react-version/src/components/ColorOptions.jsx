@@ -13,7 +13,7 @@ export default function ColorOptions({
 						key={i}
 						className="color-option"
 						onClick={() => {
-							setColorSelected(color.name);
+							setColorSelected(color);
 							setSelectedImage(color.name);
 						}}
 						style={{
