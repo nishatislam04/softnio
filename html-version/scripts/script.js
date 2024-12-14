@@ -88,7 +88,11 @@ document.addEventListener("click", function (e) {
 	if (e.target.id === "checkoutFloat") {
 		overlay.classList.add("active");
 		cartModal.style.display = "block";
-		if (state.cart.length === 0) document.querySelector("#checkoutBtn").disabled = true;
+		if (state.cart.length === 0) {
+			document.querySelector("#checkoutBtn").disabled = true;
+		} else {
+			document.querySelector("#checkoutBtn").disabled = false;
+		}
 	}
 
 	if (e.target.closest("#increaseQty")) {
