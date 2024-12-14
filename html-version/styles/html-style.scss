@@ -709,6 +709,13 @@ body {
 			&:hover {
 				background-color: color.scale($secondary-color, $lightness: -10%);
 			}
+
+			&:disabled {
+				background-color: gray;
+				color: white;
+				cursor: not-allowed;
+				border: none;
+			}
 		}
 	}
 }

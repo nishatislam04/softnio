@@ -88,6 +88,7 @@ document.addEventListener("click", function (e) {
 	if (e.target.id === "checkoutFloat") {
 		overlay.classList.add("active");
 		cartModal.style.display = "block";
+		if (state.cart.length === 0) document.querySelector("#checkoutBtn").disabled = true;
 	}
 
 	if (e.target.closest("#increaseQty")) {
@@ -106,6 +107,9 @@ document.addEventListener("click", function (e) {
 	if (e.target.classList.contains("color-option")) {
 		removeStyles(".color-option", "active");
 
+		state.quantity = 1;
+		document.querySelector("#quantity").value = state.quantity;
+
 		const element = e.target;
 		element.classList.add("active");
 		element.style.outlineColor = element.dataset.color;
@@ -121,6 +125,9 @@ document.addEventListener("click", function (e) {
 	}
 
 	if (e.target.closest(".size-option")) {
+		state.quantity = 1;
+		document.querySelector("#quantity").value = state.quantity;
+
 		const element = e.target.closest(".size-option");
 		state.selectedSize = element.dataset.size;
 		document.querySelector(".size-option.active")?.classList.remove("active");
