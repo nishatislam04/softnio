@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./react-style.scss";
+import { useEffect, useState } from "react";
+import "./style.scss";
 
 import SizeOptions from "./components/SizeOptions";
 import ColorOptions from "./components/ColorOptions";
@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import Overlay from "./components/Overlay";
 import CheckoutButton from "./components/CheckoutButton";
 import { colors, productName, sizes } from "./utils/constants";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
 	const [selectedImage, setSelectedImage] = useState(colors[0].name);
@@ -39,9 +40,43 @@ function App() {
 				quantity: quantity,
 			},
 		]);
+		setQuantity(1);
+		toast.success("Item Add to Cart Success", {
+			duration: 3000,
+			style: {
+				border: "1px solid #4caf50",
+				padding: "16px 24px",
+				color: "#4caf50",
+				fontSize: "15px",
+			},
+		});
 	}
+
+	function handleCheckout() {
+		setCart([]);
+		setShowCart(false);
+		setShowOverlay(false);
+		toast.success("Checkout Success", {
+			duration: 3000,
+			style: {
+				border: "1px solid #4caf50",
+				padding: "16px 24px",
+				color: "#4caf50",
+				fontSize: "15px",
+			},
+		});
+	}
+
+	useEffect(
+		function () {
+			setQuantity(1);
+		},
+		[colorSelected, sizeAndPrice]
+	);
+
 	return (
 		<>
+			<Toaster position="top-right" />
 			<ProductDescription selectedImage={selectedImage}>
 				<ColorOptions
 					colors={colors}
@@ -81,6 +116,7 @@ function App() {
 					setShowOverlay={setShowOverlay}
 					setShowCart={setShowCart}
 					totalPrice={totalPrice}
+					handleCheckout={handleCheckout}
 				/>
 			)}
 

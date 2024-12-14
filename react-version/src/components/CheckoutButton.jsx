@@ -1,4 +1,9 @@
-export default function CheckoutButton({ setShowCart, setShowOverlay, totalQuantity }) {
+export default function CheckoutButton({
+	cart,
+	setShowCart,
+	setShowOverlay,
+	totalQuantity,
+}) {
 	return (
 		<div className="checkout-float" id="checkoutFloat">
 			<button

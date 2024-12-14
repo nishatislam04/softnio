@@ -6,6 +6,7 @@ export default function Cart({
 	setShowOverlay,
 	setShowCart,
 	totalPrice,
+	handleCheckout,
 }) {
 	return (
 		<div className="cart-modal" id="cartModal">
@@ -62,13 +63,7 @@ export default function Cart({
 					}}>
 					Continue Shopping
 				</button>
-				<button
-					id="checkoutBtn"
-					onClick={() => {
-						setCart([]);
-						setShowCart(false);
-						setShowOverlay(false);
-					}}>
+				<button id="checkoutBtn" onClick={handleCheckout} disabled={cart.length === 0}>
 					Checkout
 				</button>
 			</div>

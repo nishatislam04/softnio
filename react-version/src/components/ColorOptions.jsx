@@ -18,8 +18,9 @@ export default function ColorOptions({
 						}}
 						style={{
 							backgroundColor: color.code,
-							outlineColor: colorSelected === color.name ? color.code : "transparent",
-							outlineOffset: colorSelected === color.name ? "2px" : "none",
+							outlineColor:
+								colorSelected.name === color.name ? color.code : "transparent",
+							outlineOffset: colorSelected.name === color.name ? "2px" : "none",
 						}}></div>
 				))}
 			</div>
