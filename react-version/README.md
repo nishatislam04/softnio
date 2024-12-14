@@ -5,7 +5,7 @@
 
 2.  `cd sofnio`
 
-3. `cd react`
+3. `cd react-version`
 
 4.  `npm install`
 
@@ -13,11 +13,3 @@
 
 View the Assignement `http://localhost:5173/`
 
-
-## Technology used
-
-1. Vite
-
-2. scss (sass-embedded)
-
-3. Font-Awesome

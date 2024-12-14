@@ -8,7 +8,7 @@ This is an assignment for softnio, where i have build a fully responsive and pix
 
 *  Navigate to project: `cd sofnio-assignment`
 
-* Navigate to different version: `cd html` or `cd react`
+* Navigate to different version: `cd html-version` or `cd react-version`
 
 *  Install dependency: `npm install`
 
@@ -24,6 +24,8 @@ View the Assignement in [local](http://localhost:5173/)
 2. scss (sass-embedded)
 
 3. Font-Awesome
+
+4. React Hot Toast
 
 
 ## Live Link in Vercel
